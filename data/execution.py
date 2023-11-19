@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import ProgrammingError
 from data.insert_queries import insert_statements
 from data.task_queries import OrderView, Over90Orders, PopularItems, GetMaxQuantity, GetCustomerPreppared, CancelOrder
+from data.booking_queries import CheckBooking, AddValidBooking
 
 # for typhinting purposes #
 from mysql.connector.cursor import MySQLCursor, MySQLCursorPrepared
@@ -117,3 +118,14 @@ def run_prepared_statement(prep_cursor: MySQLCursorPrepared, c_id: tuple) -> lis
     )
 
     return prep_cursor.fetchall()
+
+
+##########################
+## Table Booking System ##
+##########################
+
+def create_booking_procedures(cursor: MySQLCursor):
+    cursor.execute("DROP PROCEDURE IF EXISTS CheckBooking;")
+    cursor.execute(CheckBooking)
+    cursor.execute("DROP PROCEDURE IF EXISTS AddValidBooking;")
+    cursor.execute(AddValidBooking)

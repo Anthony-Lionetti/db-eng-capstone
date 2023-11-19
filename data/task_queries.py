@@ -56,6 +56,6 @@ CancelOrder = """
                 BEGIN 
                     DELETE FROM Orders 
                     WHERE orderId = order_id;
-                    SET message := CONCAT("Order ", order_id, " is cancelled");
+                    SELECT CONCAT("Order ", order_id, " is cancelled") as "Message";
                 END
                 """

@@ -2,9 +2,11 @@
 
 This repo was made to house my work for the Database Engineering Capstone for the Meta Coursera specialization course. I wanted to go a bit deeper than what was outlined in the course, so this is not exactly what the course suggest, but it is very close. The major differences is that I provide my Database initialization in a Jupiter Notebook using `mysql-connector-python` to write the majority of the database code.
 
+# Peer Review Grading
+
 ## Building the Database and its Functions
 
-The majority of the work with writing and executing the queries is in the testing.ipynb
+The majority of the work with writing and executing the queries is in the testing.ipynb.
 
 ## Data Visualizations in Streamlit (instead of Tableau)
 

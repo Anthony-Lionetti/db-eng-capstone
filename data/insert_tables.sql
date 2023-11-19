@@ -66,7 +66,7 @@ ENGINE = InnoDB;
 -- Table `little_lemon_capstone`.`Bookings`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `little_lemon_capstone`.`Bookings` (
-  `bookingId` INT NOT NULL,
+  `bookingId` INT NOT NULL AUTO_INCREMENT,
   `customerId` INT NOT NULL,
   `staffId` INT NOT NULL,
   `date` DATETIME NOT NULL,
