@@ -1,8 +1,6 @@
-pandas
-mysql-connector-python
-numpy
-openpyxl
-plotly
 streamlit
-streamlit-plotly-events
-
+plotly==5.18.0
+pandas
+numpy
+mysql-connector-python
+openpyxl
