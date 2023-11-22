@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly
 
 # Import Tabs #
 from dashboard.tabs import CustomerTab, ProfitTab, BubbleTab, CuisineTab
