@@ -4,7 +4,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
-from dashboard.custom.my_component import plotly_events
+# from dashboard.custom.my_component import plotly_events
 
 ## Set GLOBAL Config for Ploty Charts ##
 CONFIG = {
@@ -41,11 +41,11 @@ def CustomerTab(df: pd.DataFrame, tab) -> go.Figure:
 
     with tab:
         st.subheader("🤵 Customer Sales")
-        chart, info = st.columns([2, 1], gap="medium")
+        # chart, info = st.columns([2, 1], gap="medium")
 
-        chart.plotly_chart(fig, use_container_width=True, config=CONFIG)
-        val = plotly_events(fig)
-        info.write(val)
+        st.plotly_chart(fig, use_container_width=True, config=CONFIG)
+        # val = plotly_events(fig)
+        # info.write(val)
 
 
 def ProfitTab(df: pd.DataFrame, tab) -> None:
@@ -79,7 +79,9 @@ def ProfitTab(df: pd.DataFrame, tab) -> None:
         dragmode="pan",
         xaxis_title='Order Date',
         yaxis_title='Total Profit ($ USD)',
-        yaxis_tickformat='$,.2f'
+        yaxis_tickformat='$,.2f',
+        height=600,
+        margin=dict(l=0, r=0, t=10,)
     )
     with tab:
         st.subheader("📈 Profit Chart")
@@ -109,7 +111,9 @@ def BubbleTab(df: pd.DataFrame, tab) -> None:
         yaxis_title='Total Sales ($ USD)',
         yaxis_tickformat="$,.2f",
         xaxis_title='Total Profit ($ USD)',
-        xaxis_tickformat="$,.2f"
+        xaxis_tickformat="$,.2f",
+        height=600,
+        margin=dict(l=0, r=0, t=10,)
     )
     config = {
         'modeBarButtonsToRemove': ['zoomIn', 'zoomOut', 'select', 'lasso', "autoScale2d"],
@@ -144,7 +148,9 @@ def CuisineTab(df: pd.DataFrame, tab) -> None:
     fig.update_layout(
         yaxis_title='Total Profit ($ USD)',
         yaxis_tickformat="$,.2f",
-        xaxis_title='Year'
+        xaxis_title='Year',
+        height=600,
+        margin=dict(l=0, r=0, t=10,)
     )
     config = {
         'modeBarButtonsToRemove': ['zoomIn', 'zoomOut', 'select', 'lasso', "autoScale2d"],
