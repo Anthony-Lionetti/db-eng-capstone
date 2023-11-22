@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Import Tabs #
-from tabs import CustomerTab, ProfitTab, BubbleTab, CuisineTab
+from dashboard.tabs import CustomerTab, ProfitTab, BubbleTab, CuisineTab
 
 st.set_page_config(layout="wide", page_title="🏠 Home")
 
@@ -21,7 +21,6 @@ def load_data() -> pd.DataFrame:
 
 ## Load Data ##
 df = load_data()
-
 
 left, main, right = st.columns([1, 7, 1])
 

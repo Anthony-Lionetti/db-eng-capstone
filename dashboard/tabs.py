@@ -4,6 +4,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
+from dashboard.custom.my_component import plotly_events
 
 ## Set GLOBAL Config for Ploty Charts ##
 CONFIG = {
@@ -26,20 +27,25 @@ def CustomerTab(df: pd.DataFrame, tab) -> go.Figure:
     <b>Total Sales:</b> %{y:$,.2f}
     <extra></extra>
     """,
-        texttemplate="%{y:$,.2f}"
+        texttemplate="<b>%{y:$,.2f}</b>"
     ))
     fig.update_xaxes(range=[-1, 10])
     fig.update_yaxes(fixedrange=True)
     fig.update_layout(
         dragmode="pan",
-        title='Customer Sales',
         xaxis_title='Customer',
-        yaxis_title='Total Sales ($ USD)'
+        yaxis_title='Total Sales ($ USD)',
+        height=600,
+        margin=dict(l=0, r=0, t=10,)
     )
 
     with tab:
         st.subheader("🤵 Customer Sales")
-        st.plotly_chart(fig, use_container_width=True, config=CONFIG)
+        chart, info = st.columns([2, 1], gap="medium")
+
+        chart.plotly_chart(fig, use_container_width=True, config=CONFIG)
+        val = plotly_events(fig)
+        info.write(val)
 
 
 def ProfitTab(df: pd.DataFrame, tab) -> None:
@@ -71,7 +77,6 @@ def ProfitTab(df: pd.DataFrame, tab) -> None:
     )
     fig.update_layout(
         dragmode="pan",
-        title='Profit Chart',
         xaxis_title='Order Date',
         yaxis_title='Total Profit ($ USD)',
         yaxis_tickformat='$,.2f'
@@ -101,7 +106,6 @@ def BubbleTab(df: pd.DataFrame, tab) -> None:
     )
     fig.update_layout(
         showlegend=False,
-        title='Sales Buble Chart (w/ size=Quantity)',
         yaxis_title='Total Sales ($ USD)',
         yaxis_tickformat="$,.2f",
         xaxis_title='Total Profit ($ USD)',
@@ -112,7 +116,7 @@ def BubbleTab(df: pd.DataFrame, tab) -> None:
     }
 
     with tab:
-        st.write("🫧 Bubble Chart")
+        st.subheader("🫧 Sales Buble Chart (w/ size=Quantity)")
         st.plotly_chart(fig, use_container_width=True, config=config)
 
 
@@ -138,7 +142,6 @@ def CuisineTab(df: pd.DataFrame, tab) -> None:
     )
     fig.update_traces(texttemplate="%{y:$,.2f}")
     fig.update_layout(
-        title='Yearly Profit by Cuisine',
         yaxis_title='Total Profit ($ USD)',
         yaxis_tickformat="$,.2f",
         xaxis_title='Year'
@@ -148,5 +151,5 @@ def CuisineTab(df: pd.DataFrame, tab) -> None:
     }
 
     with tab:
-        st.subheader("🧑‍🍳 Cuisine")
+        st.subheader("🧑‍🍳 Yearly Profit by Cuisine")
         st.plotly_chart(fig, use_container_width=True, config=config)
