@@ -1,6 +1,4 @@
 plotly
-streamlit
 pandas
 numpy
 mysql-connector-python
-openpyxl
