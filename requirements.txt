@@ -1,5 +1,5 @@
+plotly
 streamlit
-plotly==5.18.0
 pandas
 numpy
 mysql-connector-python
