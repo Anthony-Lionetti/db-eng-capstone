@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import ProgrammingError
 from data.insert_queries import insert_statements
 from data.task_queries import OrderView, Over90Orders, PopularItems, GetMaxQuantity, GetCustomerPreppared, CancelOrder
-from data.booking_queries import CheckBooking, AddValidBooking
+from data.booking_queries import CheckBooking, UpdateBooking, CancelBooking, AddBooking
 
 # for typhinting purposes #
 from mysql.connector.cursor import MySQLCursor, MySQLCursorPrepared
@@ -30,7 +30,7 @@ def init_database():
 
 def insert_data(cnx: MySQLConnection, cursor: MySQLCursor) -> None:
     """
-    Purpose: To insert test data for the 
+    Purpose: To insert test data for the
     """
     try:
         cursor.execute("USE little_lemon_capstone;")
@@ -127,5 +127,9 @@ def run_prepared_statement(prep_cursor: MySQLCursorPrepared, c_id: tuple) -> lis
 def create_booking_procedures(cursor: MySQLCursor):
     cursor.execute("DROP PROCEDURE IF EXISTS CheckBooking;")
     cursor.execute(CheckBooking)
-    cursor.execute("DROP PROCEDURE IF EXISTS AddValidBooking;")
-    cursor.execute(AddValidBooking)
+    cursor.execute("DROP PROCEDURE IF EXISTS AddBooking;")
+    cursor.execute(AddBooking)
+    cursor.execute("DROP PROCEDURE IF EXISTS UpdateBooking;")
+    cursor.execute(UpdateBooking)
+    cursor.execute("DROP PROCEDURE IF EXISTS CancelBooking;")
+    cursor.execute(CancelBooking)
