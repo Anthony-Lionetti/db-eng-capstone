@@ -6,6 +6,8 @@ This repo was made to house my work for the Database Engineering Capstone for th
 
 - The Jupiter notebook is already prerun with outputs in the [jupiter notebook](testing.ipynb)
   - NOTE: I used the `mysql-connector-python` to run all of the queries instead of writing them in SQL
+- All of the custom functions in the notebook are from [here](data/execution.py)
+- All of the table booking procedures are written [here](data/booking_queries.py)
 - My dashboard with the relevant data analysis is available [here](https://db-eng-capstone-6bjdrqwdkupdzjzwhh68ck.streamlit.app/)
 
 ## Building the Database and its Functions
